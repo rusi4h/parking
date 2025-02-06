@@ -31,3 +31,4 @@ D:\Zona Downloads\WindowsFormsCars\obj\Debug\WindowsFormsCars.exe
 D:\Zona Downloads\WindowsFormsCars\obj\Debug\WindowsFormsCars.pdb
 D:\Zona Downloads\WindowsFormsCars\obj\Debug\WindowsFormsCars.FormParking.resources
 C:\Users\User\Desktop\WindowsFormsCars\obj\Debug\WindowsFormsCars.FormParking.resources
+C:\Users\User\Desktop\WindowsFormsCars\obj\Debug\WindowsFormsCars.FormCarConfig.resources

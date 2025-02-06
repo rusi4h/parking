@@ -116,5 +116,9 @@ namespace WindowsFormsCars
                 g.DrawRectangle(pen, _startPosX - 5, _startPosY, 10, 50);
             }
         }
+        public void SetDopColor(Color color)
+        {
+            DopColor = color;
+        }
     }
 }
