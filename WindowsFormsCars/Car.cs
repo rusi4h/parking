@@ -8,16 +8,25 @@ using static WindowsFormsCars.SportCar;
 
 namespace WindowsFormsCars
 {
-    internal class Car : Vehicle
+    public class Car : Vehicle
     {
         protected const int carWidth = 100;
         protected const int carHeight = 60;
+
+        public string V { get; }
+
         public Car(int maxSpeed, float weight, Color mainColor)
         {
             MaxSpeed = maxSpeed;
             Weight = weight;
             MainColor = mainColor;
         }
+
+        public Car(string v)
+        {
+            V = v;
+        }
+
         public override void MoveTransport(Direction direction)
         {
             float step = MaxSpeed * 100 / Weight;
@@ -83,6 +92,11 @@ namespace WindowsFormsCars
             g.DrawRectangle(pen, _startPosX + 25, _startPosY + 5, 35, 40);
             g.DrawRectangle(pen, _startPosX + 65, _startPosY + 10, 25, 30);
             g.DrawRectangle(pen, _startPosX, _startPosY + 10, 15, 30);
+        }
+
+        public override string ToString()
+        {
+            return MaxSpeed + ";" + Weight + ";" + MainColor.Name;
         }
     }
 }

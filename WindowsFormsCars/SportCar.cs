@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsCars
 {
-    class SportCar : Car
+    public class SportCar : Car
     {
         public enum Direction
         {
@@ -41,7 +41,11 @@ namespace WindowsFormsCars
             Random rnd = new Random();
             CountLines = rnd.Next(1, 4);
         }
-        
+
+        public SportCar(string v) : base(v)
+        {
+        }
+
         public void DrawCar(Graphics g)
         {
             Pen pen = new Pen(Color.Black);
@@ -119,6 +123,11 @@ namespace WindowsFormsCars
         public void SetDopColor(Color color)
         {
             DopColor = color;
+        }
+
+        public override string ToString()
+        {
+            return base.ToString() + ";" + DopColor.Name + ";" + FrontSpoiler + ";" + SideSpoiler + ";" + BackSpoiler;
         }
     }
 }

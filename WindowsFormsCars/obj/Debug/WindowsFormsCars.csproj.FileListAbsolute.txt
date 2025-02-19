@@ -32,3 +32,15 @@ D:\Zona Downloads\WindowsFormsCars\obj\Debug\WindowsFormsCars.pdb
 D:\Zona Downloads\WindowsFormsCars\obj\Debug\WindowsFormsCars.FormParking.resources
 C:\Users\User\Desktop\WindowsFormsCars\obj\Debug\WindowsFormsCars.FormParking.resources
 C:\Users\User\Desktop\WindowsFormsCars\obj\Debug\WindowsFormsCars.FormCarConfig.resources
+C:\Users\user.510-10\Desktop\WindowsFormsCars\obj\Debug\WindowsFormsCars.csproj.AssemblyReference.cache
+C:\Users\user.510-10\Desktop\WindowsFormsCars\obj\Debug\WindowsFormsCars.FormCar.resources
+C:\Users\user.510-10\Desktop\WindowsFormsCars\obj\Debug\WindowsFormsCars.FormCarConfig.resources
+C:\Users\user.510-10\Desktop\WindowsFormsCars\obj\Debug\WindowsFormsCars.FormParking.resources
+C:\Users\user.510-10\Desktop\WindowsFormsCars\obj\Debug\WindowsFormsCars.Properties.Resources.resources
+C:\Users\user.510-10\Desktop\WindowsFormsCars\obj\Debug\WindowsFormsCars.csproj.GenerateResource.cache
+C:\Users\user.510-10\Desktop\WindowsFormsCars\obj\Debug\WindowsFormsCars.csproj.CoreCompileInputs.cache
+C:\Users\user.510-10\Desktop\WindowsFormsCars\obj\Debug\WindowsFormsCars.exe
+C:\Users\user.510-10\Desktop\WindowsFormsCars\obj\Debug\WindowsFormsCars.pdb
+C:\Users\user.510-10\Desktop\WindowsFormsCars\bin\Debug\WindowsFormsCars.exe.config
+C:\Users\user.510-10\Desktop\WindowsFormsCars\bin\Debug\WindowsFormsCars.exe
+C:\Users\user.510-10\Desktop\WindowsFormsCars\bin\Debug\WindowsFormsCars.pdb

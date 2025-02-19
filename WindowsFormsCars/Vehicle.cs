@@ -8,7 +8,7 @@ using static WindowsFormsCars.SportCar;
 
 namespace WindowsFormsCars
 {
-    internal abstract class Vehicle : ITransport
+    public abstract class Vehicle : ITransport
     {
         protected float _startPosX;
         protected float _startPosY;

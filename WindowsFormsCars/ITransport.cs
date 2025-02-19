@@ -9,7 +9,7 @@ using static WindowsFormsCars.SportCar;
 
 namespace WindowsFormsCars
 {
-    internal interface ITransport
+    public interface ITransport
     {
         void SetPosition(int x, int y, int width, int height);
         void MoveTransport(Direction direction);
