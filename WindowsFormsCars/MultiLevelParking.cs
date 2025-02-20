@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
+using System.Drawing;
+using WindowsFormsCars;
 
-namespace WindowsFormsCars
+namespace park
 {
     public class MultiLevelParking
     {
@@ -14,6 +16,7 @@ namespace WindowsFormsCars
         private int pictureWidth;
         private int pictureHeight;
 
+
         public MultiLevelParking(int countStages, int pictureWidth, int pictureHeight)
         {
             parkingStages = new List<Parking<ITransport>>();
@@ -21,9 +24,11 @@ namespace WindowsFormsCars
             this.pictureHeight = pictureHeight;
             for (int i = 0; i < countStages; ++i)
             {
-                parkingStages.Add(new Parking<ITransport>(countPlaces, pictureWidth, pictureHeight));
+                parkingStages.Add(new Parking<ITransport>(countPlaces, pictureWidth,
+                pictureHeight));
             }
         }
+
         public Parking<ITransport> this[int ind]
         {
             get
@@ -36,7 +41,8 @@ namespace WindowsFormsCars
             }
         }
 
-        public bool SaveData(string filename)
+
+        public void SaveData(string filename)
         {
             if (File.Exists(filename))
             {
@@ -48,38 +54,31 @@ namespace WindowsFormsCars
                 foreach (var level in parkingStages)
                 {
                     WriteToFile("Level" + Environment.NewLine, fs);
-                    for (int i = 0; i < countPlaces; i++)
+                    foreach (ITransport car in level)
                     {
-                        var car = level[i];
-                        if (car != null)
+                        if (car.GetType().Name == "Car")
                         {
-                            if (car.GetType().Name == "Car")
-                            {
-                                WriteToFile(i + ":Car:", fs);
-                            }
-                            if (car.GetType().Name == "SportCar")
-                            {
-                                WriteToFile(i + ":SportCar:", fs);
-                            }
-                            WriteToFile(car + Environment.NewLine, fs);
+                            WriteToFile(level.GetKey + ":Car:", fs);
                         }
+                        if (car.GetType().Name == "SportCar")
+                        {
+                            WriteToFile(level.GetKey + ":SportCar:", fs);
+                        }
+                        WriteToFile(car + Environment.NewLine, fs);
                     }
                 }
             }
-            return true;
         }
-
         private void WriteToFile(string text, FileStream stream)
         {
             byte[] info = new UTF8Encoding(true).GetBytes(text);
             stream.Write(info, 0, info.Length);
         }
-
-        public bool LoadData(string filename)
+        public void LoadData(string filename)
         {
-            if (!File.Exists(filename)) 
+            if (!File.Exists(filename))
             {
-                return false;
+                throw new FileNotFoundException();
             }
             string bufferTextFromFile = "";
             using (FileStream fs = new FileStream(filename, FileMode.Open))
@@ -104,35 +103,40 @@ namespace WindowsFormsCars
             }
             else
             {
-                return false;
+                throw new Exception("Неверный формат файла");
             }
             int counter = -1;
+            int counterCar = 0;
             ITransport car = null;
             for (int i = 1; i < strs.Length; ++i)
             {
                 if (strs[i] == "Level")
                 {
                     counter++;
-                    parkingStages.Add(new Parking<ITransport>(countPlaces, pictureWidth, pictureHeight));
+                    counterCar = 0;
+                    parkingStages.Add(new Parking<ITransport>(countPlaces,
+                    pictureWidth, pictureHeight));
                     continue;
                 }
                 if (string.IsNullOrEmpty(strs[i]))
                 {
                     continue;
                 }
-                if (strs[i].Split(':')[1] == "Car") /////////////////////////////////
+                if (strs[i].Split(':')[1] == "Car")
                 {
                     car = new Car(strs[i].Split(':')[2]);
                 }
-                else if (strs[i].Split(':')[1] == "SportCar") /////////////////////////////////
+                else if (strs[i].Split(':')[1] == "SportCar")
                 {
                     car = new SportCar(strs[i].Split(':')[2]);
                 }
-
-                parkingStages[counter][Convert.ToInt32(strs[i].Split(':')[0])] = car;
+                parkingStages[counter][counterCar++] = car;
             }
-            return true;
-
         }
+        public void Sort()
+        {
+            parkingStages.Sort();
+        }
+
     }
 }

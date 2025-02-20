@@ -8,7 +8,7 @@ using static WindowsFormsCars.SportCar;
 
 namespace WindowsFormsCars
 {
-    public class Car : Vehicle
+    public class Car : Vehicle, IComparable<Car>, IEquatable<Car>
     {
         protected const int carWidth = 100;
         protected const int carHeight = 60;
@@ -98,5 +98,69 @@ namespace WindowsFormsCars
         {
             return MaxSpeed + ";" + Weight + ";" + MainColor.Name;
         }
+        public int CompareTo(Car other)
+        {
+            if (other == null)
+            {
+                return 1;
+            }
+            if (MaxSpeed != other.MaxSpeed)
+            {
+                return MaxSpeed.CompareTo(other.MaxSpeed);
+            }
+            if (Weight != other.Weight)
+            {
+                return Weight.CompareTo(other.Weight);
+            }
+            if (MainColor != other.MainColor)
+            {
+                MainColor.Name.CompareTo(other.MainColor.Name);
+            }
+            return 0;
+        }
+        public bool Equals(Car other)
+        {
+            if (other == null)
+            {
+                return false;
+            }
+            if (GetType().Name != other.GetType().Name)
+            {
+                return false;
+            }
+            if (MaxSpeed != other.MaxSpeed)
+            {
+                return false;
+            }
+            if (Weight != other.Weight)
+            {
+                return false;
+            }
+            if (MainColor != other.MainColor)
+            {
+                return false;
+            }
+            return true;
+        }
+        public override bool Equals(Object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+            if (!(obj is Car carObj))
+            {
+                return false;
+            }
+            else
+            {
+                return Equals(carObj);
+            }
+        }
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+
     }
 }
